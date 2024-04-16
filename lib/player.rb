@@ -23,9 +23,8 @@ class Player
     end
 
     def attacks(target)
-        puts "#{@name} attaque #{target.name} !"
         points_of_attack = compute_damage
-        puts "#{@name} lui inflige #{points_of_attack} points de dommage(s)\n"
+        puts "#{@name} attaque #{target.name}, #{target.name} perds #{points_of_attack} de vie\n"
         target.gets_damage(points_of_attack)
     end
 
