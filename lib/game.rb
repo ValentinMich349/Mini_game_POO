@@ -19,6 +19,8 @@ class Game
             @enemies_in_sight.delete(enemy)
             @players_left -= 1
             puts "un ennemi de moins ! "
+            sleep 0.5
+            puts "~" * 15
           end
         end
       end
