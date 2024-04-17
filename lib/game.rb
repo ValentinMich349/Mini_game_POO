@@ -101,10 +101,13 @@ class Game
           @human_player.search_weapon
         when 's'
           @human_player.search_health_pack
-        when '0'..@enemies_in_sight.size.to_s
-          index = str.to_i
-          @human_player.attacks(@enemies_in_sight[index]) if @enemies_in_sight[index].life_points.positive?
+        when '0'..@enemies_in_sight.size.to_s  #permet de rentrer dans le cas si on met un chiffre compris entre 0 et le nombre max d'ennemi
+          index = str.to_i #recupere le chiffre qu'a mis l'utilisateur
+          if index > @enemies_in_sight.size #test si l'utilisateur n'a pas mis un chiffre superieur a la taille max d'ennemi (ex: insertion de 5 mais uniquement 4 adeversaires)
+          @human_player.attacks(@enemies_in_sight[index]) if @enemies_in_sight[index].life_points.positive? 
           kill_player(@enemies_in_sight[index]) if @enemies_in_sight[index].life_points.zero?
+          else puts "Tu viens de taper dans le vide la" 
+          end
         when 'l1l2r1r2hbgdl1l2r1r2hbgd'
             @human_player.give_god_mode
             puts "Ok bien joué t'es quasiment invincible maintenant le monde t'appartient"
